@@ -70,6 +70,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Death")
         {
+            speed = 0;
             ManagerScript.Instance.Lose();
         }
 

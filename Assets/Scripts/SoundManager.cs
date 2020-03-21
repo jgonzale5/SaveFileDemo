@@ -14,6 +14,23 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
+        int val = PlayerPrefs.GetInt("MusicMuted");
+
+        MusicSource.mute = (val == 1);
+
+        //Is the same as
+        //if (val == 1)
+        //{
+        //    MusicSource.mute = true;
+        //}
+        //else
+        //{
+        //    MusicSource.mute = false;
+        //}
+
+        //And
+        //MusicSource.mute = (val == 1) ? true : false;
+
         muteToggle.isOn = MusicSource.mute;
     }
 
@@ -35,6 +52,21 @@ public class SoundManager : MonoBehaviour
     public void SetMute(bool to)
     {
         MusicSource.mute = to;
+
+
+        int val = ((to) ? 1 : 0);
+
+        //Is the equivalent of 
+        //if (to == true)
+        //{
+        //    val = 1;
+        //}
+        //else
+        //{
+        //    val = 0;
+        //}
+
+        PlayerPrefs.SetInt("MusicMuted", val);
     }
 
     public void PauseMusic()
