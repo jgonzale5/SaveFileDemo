@@ -18,11 +18,25 @@ public class ManagerScript : MonoBehaviour
     public void Win()
     {
         OnWin.Invoke();
+        SaveScript.saveFile.ScoreIncrease();
     }
 
     public void Lose()
     {
         OnLose.Invoke();
+    }
+
+    public void LoadSaveFile()
+    {
+        bool loadSuccess = SaveScript.LOAD();
+
+        if (loadSuccess)
+            SceneManager.LoadScene(SaveScript.saveFile.lastScene);
+    }
+
+    public void LoadScene(string withName)
+    {
+        SceneManager.LoadScene(withName);
     }
 
     public void Restart()
